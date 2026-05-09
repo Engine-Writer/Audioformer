@@ -1,13 +1,11 @@
 # MSTCT: Multi-Scale Temporal Conv-Transformer
 
-**Raw waveform → No spectrogram → Standard Transformer**
-
 ## Architecture
 
 1. Raw waveform `(1, T)` input — no spectrogram, no FFT
-2. Progressive channel growth: `1 → 32 → 128 → d_model` using grouped convolutions
+2. Progressive channel growth: `1, 32, 128, d_model` using grouped convolutions
 3. Skip connections at every block
-4. Adaptive pooling → fixed sequence length
+4. Adaptive pooling transition to fixed sequence length
 5. Patch embedding: `stride = patch_size`, `kernel_size = patch_size` with 4-group grouped conv, followed by 1×C linear transformation
 6. Standard Transformer encoder
 7. Classification head
